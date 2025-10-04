@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bookstore Carousel Coverflow</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    /* ===== Coverflow Carousel 3D Styles (for book hero section) ===== */
+
+.carousel-hero-section {
+  background: #fff;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  border-radius: 30px;
+  margin-bottom: 100px;
+}
+
+.carousel-heading {
+  font-size: 40px;
+  padding-bottom: 20px;
+  color: #0e0c0c;
+  text-align: center;
+}
+
+.coverflow-carousel {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0 24px 0;
+  user-select: none;
+}
+
+.carousel-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 650px;
+  min-height: 410px;
+  position: relative;
+  transition: box-shadow 0.3s;
+  z-index: 1;
+  perspective: 1200px;
+}
+
+.carousel-card {
+  width: 240px;
+  min-height: 375px;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 4px 35px 0 rgba(24,18,38,0.15);
+  margin: 0 0px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: center center;
+  transition:
+    transform 0.6s cubic-bezier(.81,.1,.2,.91),
+    box-shadow 0.32s cubic-bezier(.43,.28,.29,.81),
+    z-index 0s 0.17s,
+    filter 0.29s;
+  cursor: pointer;
+  will-change: transform, filter, opacity;
+  opacity: 0.77;
+  filter: blur(0.8px) grayscale(16%);
+}
+
+.carousel-card.center {
+  box-shadow: 0 12px 36px 0 #6e37d229, 0 2px 16px 0 #a659cb25;
+  cursor: default;
+  border: 3.5px solid #a977da;
+  opacity: 1 !important;
+  filter: none !important;
+  z-index: 32 !important;
+}
+
+.carousel-card.side {
+  z-index: 10;
+}
+
+.carousel-card.dimmed {
+  z-index: 1;
+}
+
+.carousel-card .carousel-card-image {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ede8f3;
+}
+.carousel-card .carousel-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.33s cubic-bezier(.43,.28,.29,.81);
+}
+
+.carousel-card .carousel-card-info {
+  padding: 18px 20px 16px 20px;
+  text-align: center;
+}
+.carousel-card .book-title {
+  font-size: 1.18rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #1b1427;
+}
+.carousel-card .book-author {
+  font-size: 1rem;
+  color: #49485a;
+  margin-bottom: 8px;
+}
+.carousel-card .book-price {
+  color: #a659cb;
+  font-weight: bold;
+  font-size: 1.11em;
+  margin-top: 8px;
+  display: block;
+}
+
+.carousel-track.dragging .carousel-card {
+  pointer-events: none;
+  transition: none !important;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fcfcfff2;
+  border: 1.5px solid #b8b0d5;
+  width: 54px;
+  height: 54px;
+  border-radius: 100%;
+  box-shadow: 0 2px 8px #cfc7fd3b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 600;
+  z-index: 8;
+  transition:
+    background .22s,
+    box-shadow .22s,
+    transform .18s cubic-bezier(0.23,1,0.32,1);
+  outline: none;
+  user-select: none;
+}
+.carousel-arrow.left { left: -52px; }
+.carousel-arrow.right { right: -52px; }
+
+.carousel-arrow:hover, .carousel-arrow:focus-visible {
+  background: #e5d8ff;
+  box-shadow: 0 3px 16px #a37edd6e;
+  color: #842ad9;
+  transform: scale(1.09) translateY(-50%);
+  outline: none;
+}
+
+.carousel-arrow:active {
+  transform: scale(0.97) translateY(-50%);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 38px auto 0 auto;
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 7px;
+  z-index: 3;
+}
+
+.carousel-dot {
+  width: 13px;
+  height: 13px;
+  background: #e3dbff;
+  border-radius: 50%;
+  border: 2px solid #e3dbff;
+  outline: none;
+  transition: background 0.24s, border-color 0.2s, transform 0.17s;
+  cursor: pointer;
+  box-shadow: 0 1px 5px #d4c4fc52;
+}
+.carousel-dot.active {
+  background: #a659cb;
+  border: 2.5px solid #875adf;
+  transform: scale(1.19);
+}
+
+.carousel-dot:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2.5px #a659cb66;
+}
+
+@media (max-width: 900px) {
+  .coverflow-carousel, .carousel-track { max-width: 99vw; width: 99vw;}
+  .carousel-track { width: 99vw; min-height:330px;}
+  .carousel-card { width: 180px;}
+  .carousel-card .carousel-card-image { height: 155px;}
+  .carousel-arrow.left { left: -20px;}
+  .carousel-arrow.right { right: -20px;}
+}
+@media (max-width: 599px) {
+  .carousel-heading { font-size: 1.26em; }
+  .coverflow-carousel, .carousel-track {max-width:100vw;}
+  .carousel-track { width: 100vw; min-height:170px;}
+  .carousel-card { width: 88px; }
+  .carousel-card .carousel-card-image { height: 58px;}
+  .carousel-arrow {
+    width: 28px; height: 28px; font-size: 0.98em;
+    left: -4px; right: -4px;
+  }
+  .carousel-dot { width:9px; height:9px; }
+  .carousel-dots { margin-top: 13px; }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER SECTION -->
+  <header class="main-header">
+    <div class="header-flex">
+      <div class="branding">
+        <a href="#" class="brand-link">
+          <h1 class="site-title">Book Haven</h1>
+          <div class="site-tagline">Where Stories Come Alive</div>
+        </a>
+      </div>
+      <nav>
+        <ul class="main-menu">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Books</a></li>
+          <li><a href="#">Genres</a></li>
+          <li><a href="#">Cart <span class="cart-total">2</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION: Coverflow Carousel -->
+  <section class="carousel-hero-section">
+    <h2 class="carousel-heading">Featured Books</h2>
+    <div class="coverflow-carousel" id="coverflowCarousel">
+
+      <button class="carousel-arrow left" id="carouselPrev" aria-label="Previous Slide">&larr;</button>
+
+      <div class="carousel-track" id="carouselTrack">
+        <!-- Example Book Cards. Replace images/titles/authors/prices as needed. -->
+        <div class="carousel-card">
+          <div class="carousel-card-image"><img src="book1.jpg" alt="The Sunset Painter book cover"></div>
+          <div class="carousel-card-info">
+            <h3 class="book-title">The Sunset Painter</h3>
+            <p class="book-author">by John Doe</p>
+            <span class="book-price">$14.99</span>
+          </div>
+        </div>
+        <div class="carousel-card">
+          <div class="carousel-card-image"><img src="book2.jpg" alt="Emma by the Sea book cover"></div>
+          <div class="carousel-card-info">
+            <h3 class="book-title">Emma by the Sea</h3>
+            <p class="book-author">by Jane Austen</p>
+            <span class="book-price">$18.99</span>
+          </div>
+        </div>
+        <div class="carousel-card">
+          <div class="carousel-card-image"><img src="book3.jpg" alt="City Solace book cover"></div>
+          <div class="carousel-card-info">
+            <h3 class="book-title">City Solace</h3>
+            <p class="book-author">by Alex Lee</p>
+            <span class="book-price">$21.00</span>
+          </div>
+        </div>
+        <div class="carousel-card">
+          <div class="carousel-card-image"><img src="book4.jpg" alt="Moonlit Road book cover"></div>
+          <div class="carousel-card-info">
+            <h3 class="book-title">Moonlit Road</h3>
+            <p class="book-author">by Ravi Rao</p>
+            <span class="book-price">$16.00</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-arrow right" id="carouselNext" aria-label="Next Slide">&rarr;</button>
+      
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+  </section>
+
+  <!-- EXAMPLE OTHER CONTENT (retained, not required for the demo): -->
+  <main class="container">
+    <section>
+      <h2 class="featured-title">Welcome to Book Haven</h2>
+      <p>Explore our curated selection of fiction, non-fiction, and coffee-table books.</p>
+      <div id="published-books-section">
+        <h2>Published Books</h2>
+        <div id="published-books-grid">
+          <!-- ... Book cards populate here ... -->
+        </div>
+      </div>
+    </section>
+    <!-- More main content ... -->
+  </main>
+
+  <footer class="page-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>Your favorite indie bookstore, online and open 24/7.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <ul>
+          <li><i>📞</i> +1 234 567 890</li>
+          <li><i>📧</i> hello@bookhaven.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Book Haven. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Coverflow Carousel SCRIPT -->
+  <script>
+(function(){
+  const track = document.getElementById('carouselTrack');
+  const cards = Array.from(track.children);
+  const prevBtn = document.getElementById('carouselPrev');
+  const nextBtn = document.getElementById('carouselNext');
+  const dotsContainer = document.getElementById('carouselDots');
+
+  let current = Math.floor(cards.length / 2); // center slide on load
+  let startX = 0;
+  let deltaX = 0;
+  let isDragging = false;
+  let hasMoved = false;
+
+  renderDots();
+  updateCards();
+
+  // NAVIGATION
+  prevBtn.addEventListener('click', ()=>goTo(current-1));
+  nextBtn.addEventListener('click', ()=>goTo(current+1));
+
+  function goTo(idx) {
+    if(idx<0) idx=0;
+    if(idx>=cards.length) idx = cards.length-1;
+    if(current!==idx) {
+      current = idx;
+      updateCards();
+      renderDots();
+    }
+  }
+
+  function renderDots(){
+    dotsContainer.innerHTML = "";
+    for(let i=0; i<cards.length; i++){
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot'+(i===current?' active':'');
+      dot.setAttribute('aria-label','Go to slide '+(i+1));
+      dot.tabIndex = 0;
+      dot.addEventListener('click', ()=>goTo(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  // 3D TRANSFORM for Coverflow
+  function updateCards(){
+    cards.forEach((card, i)=>{
+      const offset = i-current;
+      card.classList.remove('center', 'dimmed', 'side');
+      card.style.zIndex = 100-Math.abs(offset);
+      card.setAttribute('tabindex', offset===0?'0':'-1');
+
+      if(offset === 0){
+        card.classList.add('center');
+        card.style.transform = `translateX(0) scale(1.22) perspective(1200px) rotateY(0deg)`;
+        card.style.filter = 'none';
+        card.style.opacity = '1';
+      }
+      else if(Math.abs(offset) === 1){
+        card.classList.add('side');
+        const angle = 48 * (offset < 0 ? 1 : -1);
+        card.style.transform = 
+          `translateX(${offset*210}px) scale(.8) perspective(1200px) rotateY(${angle}deg)`;
+        card.style.filter = 'blur(1.5px) contrast(0.85) grayscale(25%)';
+        card.style.opacity = '0.77';
+      } else {
+        card.classList.add('dimmed');
+        const sign = offset<0 ? 1 : -1;
+        card.style.transform = 
+          `translateX(${sign*370}px) scale(0.59) perspective(1200px) rotateY(${sign*72}deg)`;
+        card.style.filter = 'blur(2.7px) grayscale(55%) contrast(0.74)';
+        card.style.opacity = '0.55';
+      }
+    });
+  }
+
+  // CLICK card to center
+  cards.forEach((card, idx)=>{
+    card.addEventListener('click', ()=>{
+      if(idx!==current)
+        goTo(idx);
+    });
+  });
+
+  // Drag/Swipe support
+  function dragStart(e){
+    if(e.type==="touchstart") e = e.touches[0];
+    startX = e.clientX;
+    isDragging = true;
+    hasMoved = false;
+    track.classList.add('dragging');
+  }
+  function dragMove(e){
+    if(!isDragging) return;
+    let x = (e.touches?e.touches[0]:e).clientX;
+    deltaX = x-startX;
+    if(Math.abs(deltaX)>10) hasMoved = true;
+  }
+  function dragEnd(){
+    if(!isDragging) return;
+    track.classList.remove('dragging');
+    if(Math.abs(deltaX) > 60){
+      if(deltaX<0 && current < cards.length-1) goTo(current+1);
+      if(deltaX>0 && current > 0) goTo(current-1);
+    }
+    deltaX = 0;
+    isDragging = false;
+    hasMoved = false;
+  }
+
+  // Mouse
+  track.addEventListener('mousedown', dragStart);
+  window.addEventListener('mousemove', dragMove);
+  window.addEventListener('mouseup', dragEnd);
+
+  // Touch
+  track.addEventListener('touchstart', dragStart);
+  window.addEventListener('touchmove', dragMove);
+  window.addEventListener('touchend', dragEnd);
+
+  // Keyboard
+  track.addEventListener('keydown', e=>{
+    if(e.key==='ArrowRight') goTo(current+1);
+    if(e.key==='ArrowLeft') goTo(current-1);
+  });
+
+})();
+  </script>
+</body>
+</html>
