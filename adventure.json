@@ -1,0 +1,98 @@
+[
+  {
+    "title": "The Lost Expedition",
+    "author": "A.J. Rivers",
+    "price": 450,
+    "stock": 12,
+    "coverImage": "https://m.media-amazon.com/images/I/914+uNfeQAL._UF1000,1000_QL80_.jpg",
+    "genre": "Adventure"
+  },
+  {
+    "title": "The Jungle Compass",
+    "author": "Ethan Cross",
+    "price": 380,
+    "stock": 10,
+    "coverImage": "https://static.wixstatic.com/media/08b197_fd3644712484415a84f4ab1d4dfe1421~mv2.jpg/v1/fill/w_433,h_651,al_c,lg_1,q_80,enc_avif,quality_auto/08b197_fd3644712484415a84f4ab1d4dfe1421~mv2.jpg",
+    "genre": "Adventure"
+  },
+  {
+    "title": "The Magic of the Lost Temple",
+    "author": "Sudha Murty Kane",
+    "price": 490,
+    "stock": 5,
+    "coverImage": "https://koolskoolbookstore.com/cdn/shop/files/711gZL2yHsL._SL1500_1200x1200.jpg?v=1703257885",
+    "genre": "Adventure"
+  },
+  {
+    "title": "Skybound Odyssey",
+    "author": "Clara Rhodes",
+    "price": 530,
+    "stock": 9,
+    "coverImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR84PRlVa1TJMUPUmWodOmxFoUS9g4f5IXvVA&s",
+    "genre": "Adventure"
+  },
+  {
+    "title": "The Desert’s Secret",
+    "author": "Rafael Soto",
+    "price": 460,
+    "stock": 6,
+    "coverImage": "https://i.ytimg.com/vi/Z4YrkxDHDX0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDllCIMprU_4svbLDVTXd6NsD05pQ",
+    "genre": "Adventure"
+  },
+  {
+    "title": "The Cursed Crown",
+    "author": "Victoria Kane",
+    "price": 499,
+    "stock": 8,
+    "coverImage": "https://m.media-amazon.com/images/I/619-kvMlp8S._UF1000,1000_QL80_.jpg",
+    "genre": "Adventure"
+  },
+  {
+    "title": "Island of the Lost",
+    "author": "Max Holloway",
+    "price": 429,
+    "stock": 6,
+    "coverImage": "https://m.media-amazon.com/images/I/91W8IaQemKL.jpg",
+    "genre": "Adventure"
+  },
+  {
+    "title": "The Clockwork Explorer",
+    "author": "Felix Graves",
+    "price": 550,
+    "stock": 4,
+    "coverImage": "https://images-na.ssl-images-amazon.com/images/I/51d7H-r7wWL._SY550_.jpg",
+    "genre": "Adventure"
+  },
+  {
+    "title": "Whispers of the Ancient Sea",
+    "author": "Mara Linwood",
+    "price": 475,
+    "stock": 7,
+    "coverImage": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f42fc408-e8da-4b53-a925-95199354a9c6/dgxvlr8-d36f89ff-0191-4a76-bdb2-d4f843472e40.jpg/v1/fill/w_1024,h_1360,q_75,strp/whispers_of_the_ancient_sea_by_oanarinaldi_dgxvlr8-fullview.jpg",
+    "genre": "Adventure"
+  },
+  {
+    "title": "The Frozen Expedition",
+    "author": "Elias Frost",
+    "price": 510,
+    "stock": 5,
+    "coverImage": "https://upload.wikimedia.org/wikipedia/en/c/ca/FiT_Fate_of_Franklin_Expedition_book_cover.jpg",
+    "genre": "Adventure"
+  },
+  {
+    "title": "The Shadow Ruins",
+    "author": "Lila Carter",
+    "price": 480,
+    "stock": 9,
+    "coverImage": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1587589572i/53246292.jpg",
+    "genre": "Adventure"
+  },
+  {
+    "title": "The Sky Pirate’s Revenge",
+    "author": "Captain J. R. Hartley",
+    "price": 540,
+    "stock": 6,
+    "coverImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShc6ucOC_vnMYa5-_-eC2zZhXq_Z4BEiIivw&s",
+    "genre": "Adventure"
+  }
+]

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookNook - Your Literary Haven</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Montserrat:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+    }
+
+    .hero {
+      background: url('https://cdna.artstation.com/p/assets/images/images/005/852/956/large/slotopaint-gamedesign-background.jpg?1494251902') center/cover no-repeat;
+      padding: 200px 20px;
+      text-align: center;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      position: relative;
+      min-height: 300px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-left: 50px;
+    }
+
+    .hero p {
+      font-size: 40px;
+      margin-left: 50px;
+      margin-top: 40px;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(44, 62, 80, 0.8);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background 0.3s;
+      z-index: 2;
+    }
+
+    .back-button:hover {
+      background: rgba(26, 37, 47, 0.9);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container header-flex">
+      <div class="branding">
+        <a href="/html/index.html" class="brand-link">
+          <h1 class="site-title">BookNook</h1>
+          <span class="site-tagline">Literary Haven</span>
+        </a>
+      </div>
+      <ul class="main-menu">
+        <li><a href="/html/index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="/html/deals.html"><i class="fas fa-tag"></i> Deals</a></li>
+        <li><a href="/html/aboutus.html"><i class="fas fa-bookmark"></i> About Us</a></li>
+        <li><a href="/html/publish.html"><i class="fas fa-book"></i> Publish</a></li>
+        <li><a href="/html/wishlist.html"><i class="fas fa-heart"></i> Wishlist</a></li>
+        <li><a href="/html/account.html" id="authControl"><i class="fas fa-user"></i> <span id="authStatus">LOG IN</span></a></li>
+        <li><a href="/html/cart.html"><i class="fas fa-shopping-bag"></i> Cart <span class="cart-total">0</span></a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <a href="/html/index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back</a>
+    <div class="hero-content">
+      <h1>Thrilling Adventure Books</h1>
+      <p>Embark on daring quests through uncharted lands and epic journeys</p>
+    </div>
+  </header>
+
+  <!-- Adventure Books -->
+  <section class="fiction-books-section" id="fiction-reads">
+    <div class="section-header">
+      <h2 class="fiction-books-heading">Adventure Reads</h2>
+    </div>
+    <div class="carousel__wrapper">
+      <div class="carousel__header">
+        <div></div>
+        <div class="carousel__controls">
+          <button class="carousel__arrow arrow-prev">&lsaquo;</button>
+          <button class="carousel__arrow arrow-next">&rsaquo;</button>
+        </div>
+      </div>
+      <div class="carousel__content books-grid" id="book-list">
+        <!-- Books will be loaded dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>BookNook</h3>
+        <p>Your one-stop shop for books and creative stationery that inspire imagination and learning.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="/html/aboutus.html">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Returns & Exchanges</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Customer Service</h3>
+        <ul>
+          <li><i class="fas fa-phone"></i> +91 9876543210</li>
+          <li><i class="fas fa-envelope"></i> help@booknook.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> Mumbai, India</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Subscribe for updates and special offers!</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023 BookNook. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Dynamic Book Loading Script -->
+  <script>
+    async function loadBooks() {
+      try {
+        console.log("📢 Fetching books...");
+        const res = await fetch("http://localhost:5000/api/books");
+        if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+
+        const books = await res.json();
+        console.log("✅ Books fetched:", books);
+
+        const container = document.getElementById("book-list");
+        container.innerHTML = "";
+
+        const adventureBooks = books.filter(
+          book => book.genre && book.genre.toLowerCase() === "adventure"
+        );
+
+        if (adventureBooks.length === 0) {
+          container.innerHTML = "<p>No adventure books available.</p>";
+          return;
+        }
+
+        adventureBooks.forEach(book => {
+          container.innerHTML += `
+            <div class="book-card" data-book-id="${book._id || ''}" 
+                 data-book-name="${book.title}" 
+                 data-author="${book.author}" 
+                 data-price="${book.price}" 
+                 data-stock="${book.stock}">
+              <div class="book-image">
+                <img src="${book.coverImage}" alt="${book.title}">
+              </div>
+              <div class="book-details">
+                <div class="book-header">
+                  <h3 class="book-title">${book.title}</h3>
+                  <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                </div>
+                <p class="book-author">By ${book.author}</p>
+                <div class="book-meta">
+                  <div class="quantity-selector">
+                    <button class="quantity-minus">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1" max="${book.stock}">
+                    <button class="quantity-plus">+</button>
+                  </div>
+                  <span class="price">₹${book.price}</span>
+                </div>
+                <button class="add-to-cart"
+                  onclick="addToCart('${book.title}', 'By ${book.author}', ${book.price}, getQuantity(this))">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          `;
+        });
+
+        attachQuantityHandlers();
+      } catch (err) {
+        console.error("❌ Error loading books:", err);
+      }
+    }
+
+    function attachQuantityHandlers() {
+      document.querySelectorAll('.quantity-plus').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const input = this.previousElementSibling;
+          input.value = Math.min(parseInt(input.max), parseInt(input.value) + 1);
+        });
+      });
+
+      document.querySelectorAll('.quantity-minus').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const input = this.nextElementSibling;
+          input.value = Math.max(1, parseInt(input.value) - 1);
+        });
+      });
+    }
+
+    function getQuantity(button) {
+      const card = button.closest('.book-card');
+      const input = card.querySelector('.quantity-input');
+      return parseInt(input.value) || 1;
+    }
+
+    function addToCart(title, author, price, quantity = 1) {
+      let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      let existing = cart.find(item => item.title === title && item.author === author);
+
+      if (existing) {
+        existing.quantity += quantity;
+      } else {
+        cart.push({ title, author, price, quantity });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${title} added to cart! 🛒 (${quantity})`);
+    }
+
+    document.addEventListener("DOMContentLoaded", loadBooks);
+  </script>
+</body>
+</html>

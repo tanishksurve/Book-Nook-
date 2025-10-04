@@ -1,0 +1,188 @@
+.exclusive-section {
+  padding: 3rem 1rem;
+  background: #f4f8fb; /* soft blue background */
+  margin: 2rem 0;
+}
+
+.section-title {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #1a3557; /* deep blue */
+}
+
+.exclusive-carousel {
+  padding: 1rem;
+  position: relative;
+}
+
+.book-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(26, 53, 87, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s;
+  margin: 0 auto;
+  max-width: 300px;
+  border: 1px solid #e3eaf2;
+}
+
+.book-card:hover {
+  transform: translateY(-7px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(26, 53, 87, 0.13);
+}
+
+.book-image img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  background: #e3eaf2;
+}
+
+.book-details {
+  padding: 1.5rem;
+  background: #f7fbff;
+}
+
+.book-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.book-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  color: #1a3557;
+}
+
+.wishlist-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #b0c4de;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.wishlist-btn:hover, .wishlist-btn.active {
+  color: #3a7ca5;
+}
+
+.book-author {
+  color: #4a6680;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.book-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  border: 1px solid #b0c4de;
+  border-radius: 4px;
+  background: #e3eaf2;
+}
+
+.quantity-minus, .quantity-plus {
+  background: #e3eaf2;
+  border: none;
+  padding: 0.5rem;
+  width: 30px;
+  cursor: pointer;
+  color: #1a3557;
+  font-weight: bold;
+}
+
+.quantity-input {
+  width: 40px;
+  text-align: center;
+  border: none;
+  border-left: 1px solid #b0c4de;
+  border-right: 1px solid #b0c4de;
+  background: #f7fbff;
+  color: #1a3557;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #3a7ca5;
+}
+
+.add-to-cart {
+  width: 100%;
+  padding: 0.8rem;
+  background: linear-gradient(90deg, #3a7ca5 0%, #1a3557 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 8px rgba(26, 53, 87, 0.08);
+  letter-spacing: 0.5px;
+}
+
+.add-to-cart:hover {
+  background: linear-gradient(90deg, #1a3557 0%, #3a7ca5 100%);
+  box-shadow: 0 4px 16px rgba(26, 53, 87, 0.13);
+}
+
+/* Swiper navigation */
+.swiper-button-next, .swiper-button-prev {
+  color: #fff;
+  background: linear-gradient(135deg, #3a7ca5 0%, #1a3557 100%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(26, 53, 87, 0.13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+  border: none;
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+  background: linear-gradient(135deg, #1a3557 0%, #3a7ca5 100%);
+  color: #fff;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  font-size: 1.5rem;
+}
+
+.swiper-pagination-bullet {
+  background: #b0c4de;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #1a3557;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  .book-image img {
+    height: 220px;
+  }
+  .swiper-button-next, .swiper-button-prev {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+
